@@ -1,8 +1,25 @@
 const fs = require("fs");
 
-fs.readFile("./config.json", "utf8", (err, data) => {
-    if (err!=null) {
-        throw err;
+const defaultConfig = {
+    "global": {
+        "prefix": "!kiwi ",
+
+        "kiwi-enabled": false,
+        "kiwi-channel": "",
+        "kiwi-time": "2140 -0500"
     }
-    module.exports = JSON.parse(data);
+};
+
+fs.readFile("./config.json", "utf8", (err, data) => {
+    var config;
+    if (err!=null) {
+        config = defaultConfig;
+    } else {
+        config = JSON.parse(data);
+        // Add default settings
+        config = Object.assign(defaultConfig, config); 
+    }
+
+    module.exports = config;
+    module.exports.key = process.env.KIWI_KEY;
 });

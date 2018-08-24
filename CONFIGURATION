@@ -1,8 +1,8 @@
 config.json
 
-key: Discord api key
+key: Stored in the KIWI_KEY environment variable
 
-global: Override global default settings. Shadowed by the servers object.
+global: Override global default settings; Shadowed by the servers object
 
 servers: Object containing settings for specific servers
 
