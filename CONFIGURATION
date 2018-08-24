@@ -1,0 +1,17 @@
+config.json
+
+key: Discord api key
+
+global: Override global default settings. Shadowed by the servers object.
+
+servers: Object containing settings for specific servers
+
+========
+SETTINGS
+========
+
+prefix: Prefix for bot commands
+
+kiwi-enabled: enable kiwi hours
+kiwi-channel: channel to appreciate kiwis in
+kiwi-time: time to begin appreciating kiwis in UTC (HHMM +XXXX)
