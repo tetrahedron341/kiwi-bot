@@ -5,4 +5,5 @@ fs.readFile("./config.json", "utf8", (err, data) => {
         throw err;
     }
     module.exports = JSON.parse(data);
+    module.exports.key = process.env.KIWI_KEY;
 });
