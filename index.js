@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const client = new discord.Client();
 const delay = require("delay");
 
-const config = require("./config.js");
+const config = require("./config");
 
 async function waitForKiwiHours(){ // jshint ignore: line
     var current = new Date(Date.now());
