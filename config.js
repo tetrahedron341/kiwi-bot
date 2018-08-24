@@ -10,16 +10,17 @@ const defaultConfig = {
     }
 };
 
-fs.readFile("./config.json", "utf8", (err, data) => {
-    var config;
-    if (err!=null) {
-        config = defaultConfig;
-    } else {
-        config = JSON.parse(data);
-        // Add default settings
-        config = Object.assign(defaultConfig, config); 
-    }
+var config;
 
-    module.exports = config;
-    module.exports.key = process.env.KIWI_KEY;
-});
+try {
+    fs.readFileSync("./config.json", "utf8");
+
+    config = JSON.parse(data);
+    // Add default settings
+    config = Object.assign(defaultConfig, config); 
+} catch (err) {
+    config = defaultConfig;
+}
+
+module.exports = config;
+module.exports.key = process.env.KIWI_KEY;

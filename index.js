@@ -25,9 +25,11 @@ async function waitForKiwiHours(){ // jshint ignore: line
 client.on('ready', () => {
     console.log("discord.js client ready.");
     waitForKiwiHours().then(()=>{
-
-    }).catch(()=>{
-        
+        console.log("Kiwi appreciation mode active.");
+    }).catch((err)=>{
+        throw err;
     });
     console.log("Kiwi-bot is ready.");
 });
+
+client.login(config.key);
