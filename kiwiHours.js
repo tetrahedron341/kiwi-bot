@@ -20,7 +20,10 @@ async function waitForKiwiHours(channel, time) { // jshint ignore: line
         //await delay(); // jshint ignore: line
 
         console.log(`Alerting ${channel.guild.id} about real kiwi hours`);
-        channel.send("test");
+        channel.send(
+`it is currently real kiwi hours
+please leave a like and share to support our fellow kiwis
+https://youtu.be/jtR9UywKh5I`);
         kiwihours.setDate(kiwihours.getDate()+1);
     }
 }
