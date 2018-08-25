@@ -2,15 +2,17 @@ const discord = require("discord.js");
 const delay = require("delay");
 
 async function waitForKiwiHours(channel, time) { // jshint ignore: line
+    const hours = parseInt(time.substring(0,2));
+    const mins = parseInt(time.substring(2,4));
     var current = new Date(Date.now());
     //current.setDate(current.getDate()-4);
-    var kiwihours = new Date(current.getFullYear(),
+    var kiwihours = new Date(Date.UTC(current.getFullYear(),
         current.getMonth(),
         current.getDate(),
-        21+4,
-        40);
+        hours,
+        mins));
     while (true) {
-        if (kiwihours.getDay() == 2) {
+        if (kiwihours.getDay() == 2 || (kiwihours.getTime() - current.getTime()) < 0) {
             kiwihours.setDate(kiwihours.getDate() + 1);
         }
         console.log("It is currently " + current.toUTCString());
