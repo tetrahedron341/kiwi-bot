@@ -28,7 +28,7 @@ module.exports = config;
 module.exports.key = process.env.KIWI_KEY;
 
 module.exports.getServerSettings = function(serverId) {
-    var serverSettings;
+    let serverSettings;
     try {
         serverSettings = config.servers[serverId];
     } catch (e) {

@@ -4,9 +4,9 @@ const delay = require("delay");
 async function waitForKiwiHours(channel, time) { // jshint ignore: line
     const hours = parseInt(time.substring(0,2));
     const mins = parseInt(time.substring(2,4));
-    var current = new Date(Date.now());
+    let current = new Date(Date.now());
     //current.setDate(current.getDate()-4);
-    var kiwihours = new Date(Date.UTC(current.getFullYear(),
+    let kiwihours = new Date(Date.UTC(current.getFullYear(),
         current.getMonth(),
         current.getDate(),
         hours,
@@ -32,12 +32,12 @@ https://youtu.be/jtR9UywKh5I`);
 
 
 module.exports = async function(client) { // jshint ignore:line
-    var kiwiReserves = client.config.kiwi_enabled;
+    let kiwiReserves = client.config.kiwi_enabled;
     if (kiwiReserves===undefined){
         return;
     }
     kiwiReserves.forEach(serverId => {
-        var settings = client.config.getServerSettings(serverId);
+        let settings = client.config.getServerSettings(serverId);
 
         console.log(`Setting up kiwi alarm on ${serverId}`);
         try {
