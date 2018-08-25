@@ -10,9 +10,8 @@ client.config = config;
 client.on('ready', () => {
     console.log("discord.js client ready.");
     console.log(client.guilds.keyArray());
+    kiwiHours(client);
+    console.log("Kiwi-bot is ready.");
 });
-
-kiwiHours(client);
-console.log("Kiwi-bot is ready.");
 
 client.login(config.key);

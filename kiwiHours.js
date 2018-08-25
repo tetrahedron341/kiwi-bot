@@ -1,31 +1,50 @@
 const discord = require("discord.js");
+const delay = require("delay");
 
-async function waitForKiwiHours(time) { // jshint ignore: line
+async function waitForKiwiHours(channel, time) { // jshint ignore: line
     var current = new Date(Date.now());
     //current.setDate(current.getDate()-4);
     var kiwihours = new Date(current.getFullYear(),
         current.getMonth(),
-        current.getDate() + 1,
-        1,
+        current.getDate(),
+        21,
         40);
-    if (kiwihours.getDay() == 2) {
-        kiwihours.setDate(kiwihours.getDate() + 1);
+    while (true) {
+        if (kiwihours.getDay() == 2) {
+            kiwihours.setDate(kiwihours.getDate() + 1);
+        }
+        console.log("It is currently " + current.toUTCString());
+        console.log("Waiting until " + kiwihours.toUTCString());
+        console.log("Waiting for " + (kiwihours.getTime() - current.getTime()) + " ms");
+        await delay(kiwihours.getTime() - current.getTime()); // jshint ignore: line
+        //await delay(); // jshint ignore: line
+
+        channel.send("test");
+        kiwihours.setDate(kiwihours.getDate()+1);
     }
-    console.log("It is currently " + current.toUTCString());
-    console.log("Waiting until " + kiwihours.toUTCString());
-    console.log("Waiting for " + (kiwihours.getTime() - current.getTime()) + " ms");
-    await delay(kiwihours.getTime() - current.getTime()); // jshint ignore: line
-    return 0;
 }
 
 
-module.exports = function(client) { // jshint ignore:line
+module.exports = async function(client) { // jshint ignore:line
     var kiwiReserves = client.config.kiwi_enabled;
+    if (kiwiReserves===undefined){
+        return;
+    }
     kiwiReserves.forEach(serverId => {
         var settings = client.config.getServerSettings(serverId);
-        waitForKiwiHours(settings.kiwi_time).then(()=>{
+
+        console.log(`setting up kiwi alarm on ${serverId}`);
+        try {
             server = client.guilds.get(serverId);
-            server.
-        });
+            if (server===undefined) {throw new TypeError(`${serverId} not found in client.guilds.`);}
+            channel = server.channels.get(settings.kiwi_channel);
+            if (channel === undefined) { throw new TypeError(`${settings.kiwi_channel} not found in server.channels.`); }
+        } catch (e) {
+            console.log(e);
+            console.log("Error fetching channel. Make sure config.json is set up right.");
+            throw e;
+        }
+
+        waitForKiwiHours(channel, settings.kiwi_time);
     });
 }

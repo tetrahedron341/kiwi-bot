@@ -15,4 +15,4 @@ SETTINGS
 prefix: Prefix for bot commands
 
 kiwi_channel: channel to appreciate kiwis in
-kiwi_time: time to begin appreciating kiwis in UTC (HHMM +XXXX)
+kiwi_time: time to begin appreciating kiwis in UTC (HHMM)

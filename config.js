@@ -13,12 +13,14 @@ const defaultConfig = {
 var config;
 
 try {
-    fs.readFileSync("./config.json", "utf8");
+    data = fs.readFileSync("config.json", "utf8");
 
     config = JSON.parse(data);
     // Add default settings
     config = Object.assign(defaultConfig, config); 
 } catch (err) {
+    console.log(err);
+    console.log("config.json not found, using default");
     config = defaultConfig;
 }
 
