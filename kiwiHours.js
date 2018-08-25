@@ -7,7 +7,7 @@ async function waitForKiwiHours(channel, time) { // jshint ignore: line
     var kiwihours = new Date(current.getFullYear(),
         current.getMonth(),
         current.getDate(),
-        21-4,
+        21+4,
         40);
     while (true) {
         if (kiwihours.getDay() == 2) {
