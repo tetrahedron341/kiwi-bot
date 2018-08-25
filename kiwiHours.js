@@ -19,6 +19,7 @@ async function waitForKiwiHours(channel, time) { // jshint ignore: line
         await delay(kiwihours.getTime() - current.getTime()); // jshint ignore: line
         //await delay(); // jshint ignore: line
 
+        console.log(`Alerting ${channel.guild.id} about real kiwi hours`);
         channel.send("test");
         kiwihours.setDate(kiwihours.getDate()+1);
     }
@@ -33,7 +34,7 @@ module.exports = async function(client) { // jshint ignore:line
     kiwiReserves.forEach(serverId => {
         var settings = client.config.getServerSettings(serverId);
 
-        console.log(`setting up kiwi alarm on ${serverId}`);
+        console.log(`Setting up kiwi alarm on ${serverId}`);
         try {
             server = client.guilds.get(serverId);
             if (server===undefined) {throw new TypeError(`${serverId} not found in client.guilds.`);}
