@@ -6,7 +6,7 @@ const defaultConfig = {
 
         "kiwi-enabled": false,
         "kiwi-channel": "",
-        "kiwi-time": "2140 -0500"
+        "kiwi-time": "0140"
     }
 };
 
