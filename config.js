@@ -35,6 +35,6 @@ module.exports.getServerSettings = function(serverId) {
         serverSettings = {};
     }
 
-    serverSettings = Object.assign(defaultConfig, serverSettings);
+    serverSettings = Object.assign(defaultConfig.global, serverSettings);
     return serverSettings;
 };
