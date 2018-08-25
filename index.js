@@ -53,6 +53,8 @@ client.reload = function() {
 client.on('ready', () => {
     console.log("discord.js client ready.");
     console.log(client.guilds.keyArray());
-});
 
-client.login(config.key);
+    client.initialize();
+
+    client.login(client.config.key);
+});
