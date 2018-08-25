@@ -19,7 +19,7 @@ client.initialize = function() {
         if (err) return console.error(err);
         files.forEach((file)=>{
             const event = require(`./events/${file}`);
-            client.loadedModules.push(`./events/${file}`); 
+            client.loadedModules.add(`./events/${file}`); 
             let eventName = file.split(".")[0];
             client.on(eventName, event.bind(null, client));
         });
@@ -32,7 +32,7 @@ client.initialize = function() {
         files.forEach((file) =>{
             if (!file.endsWith(".js")) return;
             let mod = require(`./commands/${file}`);
-            client.loadedModules.push(`./commands/${file}`);
+            client.loadedModules.add(`./commands/${file}`);
             let commandName = file.split('.')[0];
             console.log(`Loading command: ${commandName}`);
             client.commands.set(commandName, mod);
@@ -55,6 +55,9 @@ client.on('ready', () => {
     console.log(client.guilds.keyArray());
 
     client.initialize();
-
-    client.login(client.config.key);
 });
+
+const config = require("./config");
+client.loadedModules.add("./config");
+
+client.login(config.key);
