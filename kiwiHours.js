@@ -47,4 +47,5 @@ module.exports = async function(client) { // jshint ignore:line
 
         waitForKiwiHours(channel, settings.kiwi_time);
     });
+    console.log("Kiwi Appreciation Protocol active.");
 }
