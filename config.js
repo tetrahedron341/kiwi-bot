@@ -24,3 +24,15 @@ try {
 
 module.exports = config;
 module.exports.key = process.env.KIWI_KEY;
+
+module.exports.getServerSettings = function(serverId) {
+    var serverSettings;
+    try {
+        serverSettings = config.servers[serverId];
+    } catch (e) {
+        serverSettings = {};
+    }
+
+    serverSettings = Object.assign(defaultConfig, serverSettings);
+    return serverSettings;
+};

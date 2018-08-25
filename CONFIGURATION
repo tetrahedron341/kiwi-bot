@@ -6,12 +6,13 @@ global: Override global default settings; Shadowed by the servers object
 
 servers: Object containing settings for specific servers
 
+kiwi_enabled: array of servers with kiwi appreciation enabled
+
 ========
 SETTINGS
 ========
 
 prefix: Prefix for bot commands
 
-kiwi-enabled: enable kiwi hours
-kiwi-channel: channel to appreciate kiwis in
-kiwi-time: time to begin appreciating kiwis in UTC (HHMM +XXXX)
+kiwi_channel: channel to appreciate kiwis in
+kiwi_time: time to begin appreciating kiwis in UTC (HHMM +XXXX)
