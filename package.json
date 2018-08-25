@@ -21,6 +21,7 @@
   "homepage": "https://github.com/bengdahl/kiwi-bot#readme",
   "dependencies": {
     "delay": "^3.1.0",
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "enmap": "^4.0.6"
   }
 }
