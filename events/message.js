@@ -3,7 +3,6 @@ module.exports = (client, message) => {
     
     if (message.author.bot) return;
     let prefix = client.config.getServerSettings(message.guild.id).prefix;
-    console.log(client.config.getServerSettings(message.guild.id));
     
     if (message.content.startsWith(prefix)){        
         let args = message.content.substring(prefix.length).split(" ");
