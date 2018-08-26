@@ -1,1 +1,1 @@
-worker: node index.js
+worker: node index.js 2>&1 | tee log.txt
