@@ -12,7 +12,7 @@ async function waitForKiwiHours(channel, time) { // jshint ignore: line
         hours,
         mins));
     while (true) {
-        if (kiwihours.getDay() == 2 || (kiwihours.getTime() - current.getTime()) < 0) {
+        if (kiwihours.getDay() == 3 || (kiwihours.getTime() - current.getTime()) < 0) {
             kiwihours.setDate(kiwihours.getDate() + 1);
         }
         console.log("It is currently " + current.toUTCString());
