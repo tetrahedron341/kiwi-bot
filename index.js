@@ -38,6 +38,8 @@ client.initialize = function() {
             client.commands.set(commandName, mod);
         });
     });
+
+    client.user.setActivity('the kiwis', {type: "WATCHING"}).catch(console.error);
 };
 
 client.reload = function() {
