@@ -12,7 +12,7 @@ async function waitForKiwiHours(channel, time) { // jshint ignore: line
         hours,
         mins));
     while (true) {
-        if (kiwihours.getDay() == 3 || (kiwihours.getTime() - current.getTime()) < 0) {
+        if (kiwihours.getUTCDay() == 3 || (kiwihours.getTime() - current.getTime()) < 0) {
             kiwihours.setDate(kiwihours.getDate() + 1);
         }
         console.log("It is currently " + current.toUTCString());
@@ -25,7 +25,7 @@ async function waitForKiwiHours(channel, time) { // jshint ignore: line
         channel.send(
 `it is currently real kiwi hours
 please leave a like and share to support our fellow kiwis
-https://youtu.be/jtR9UywKh5I`);
+https://youtu.be/W_FbRoly_4M`);
         kiwihours.setDate(kiwihours.getDate()+1);
     }
 }
