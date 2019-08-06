@@ -39,7 +39,8 @@ client.initialize = function() {
         });
     });
 
-    client.user.setActivity('the kiwis', {type: "WATCHING"}).catch(console.error);
+    if (!client.debug) 
+        client.user.setActivity('the kiwis', {type: "WATCHING"}).catch(console.error);
 };
 
 client.reload = function() {
@@ -62,4 +63,10 @@ client.on('ready', () => {
 const config = require("./config");
 client.loadedModules.add("./config");
 
-client.login(config.key);
+if (config.key == "DEBUG") {
+    console.log("Performing dry run");
+    client.debug = true;
+    client.initialize();
+} else {
+    client.login(config.key);
+}

@@ -36,6 +36,10 @@ module.exports = async function(client) { // jshint ignore:line
     if (kiwiReserves===undefined){
         return;
     }
+    if (client.debug){
+        console.log("Debug mode. Skipping kiwi hours...");
+        return;
+    }
     kiwiReserves.forEach(serverId => {
         let settings = client.config.getServerSettings(serverId);
 

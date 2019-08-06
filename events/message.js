@@ -12,7 +12,10 @@ module.exports = (client, message) => {
         
         let cmd = client.commands.get(command);
 
-        if (!cmd) return;
+        if (!cmd) {
+            message.channel.send("*Confused kiwi noises*");
+            return;
+        }
 
         cmd.run(client, message, args);
     }
