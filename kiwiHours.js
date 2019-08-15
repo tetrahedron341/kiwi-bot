@@ -4,8 +4,8 @@ const delay = require("delay");
 async function waitForKiwiHours(channel, time) {
     while (true) {
         let kiwiDelay = calculateNextAlarm(new Date(Date.now()), time);
-        console.log("It is currently " + Date(Date.now()));
-        console.log("Waiting until " + Date(Date.now() + kiwiDelay));
+        console.log("It is currently " + new Date(Date.now()));
+        console.log("Waiting until " + new Date(Date.now() + kiwiDelay));
         console.log("Waiting for " + kiwiDelay + " ms");
         await delay(kiwiDelay);
 
